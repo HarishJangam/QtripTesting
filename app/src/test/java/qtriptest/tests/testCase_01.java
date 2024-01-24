@@ -31,21 +31,11 @@ public class testCase_01 {
                 System.out.println(String.format("%s | %s | %s | %s", String.valueOf(java.time.LocalDateTime.now()),type,message,status));
         }
         
-        @BeforeClass(alwaysRun = true)
-        public static void createDriver() throws MalformedURLException {
-            // Launch Browser using Zalenium
-            final DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setBrowserName(BrowserType.CHROME);
-            driver = new RemoteWebDriver(new URL("http://localhost:8082/wd/hub"), capabilities);
-            driver.manage().window().maximize();
-           
-            logStatus("driver", "initializating Driver...", "Success");
-        }
 
-
-        @Test(priority=1,dataProvider = "data-provider",dataProviderClass = DP.class)
+        @Test(priority=1,dataProvider = "data-provider",dataProviderClass = DP.class,description = "this registration login verifiying here",groups = {"Login Flow"})
 	public void TestCase01(String userName,String password) throws MalformedURLException, InterruptedException {
                 // System.out.println("driver "+ driver);
+                driver=singletonDriver.getIntsance();
                 driver.get("https://qtripdynamic-qa-frontend.vercel.app/");
                 registerPage= new RegisterPage(driver);
                 registerPage.navigateToRegister();
@@ -58,6 +48,7 @@ public class testCase_01 {
                 loginPage= new LoginPage(driver);
                 loginPage.PerformLogin(lastGenerateduser,password);
                 System.out.println("Login done successfully..");
+                loginPage.performLogout();
        }
 
 
@@ -86,12 +77,12 @@ public class testCase_01 {
 
 
     
-        @AfterClass
-        public static void closDriver() throws MalformedURLException {
+//         @AfterClass
+//         public static void closDriver() throws MalformedURLException {
     
-            driver.close();
-            logStatus("driver", "closing Driver...", "Success");
-    }
+//             driver.close();
+//             logStatus("driver", "closing Driver...", "Success");
+//     }
     
 
        

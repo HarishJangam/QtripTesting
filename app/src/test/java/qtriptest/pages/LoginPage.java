@@ -11,7 +11,7 @@ import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 public class LoginPage {
 
     RemoteWebDriver driver;
-    @FindBy(className ="nav-link login")
+    @FindBy(className ="nav-link login")    
     WebElement loginHere;
     @FindBy(name="email")
     WebElement emailTextBox;
@@ -39,9 +39,13 @@ public class LoginPage {
         loginBtn.click();
         Thread.sleep(4000);
         System.out.println("Logged-in successfully..");
-        logout.click();
+        // logout.click();
         Assert.assertTrue(driver.getCurrentUrl().contains("frontend.vercel.app"), "Unable to navigate Login page");
-        System.out.println("Logout successfully..");
+        // System.out.println("Logout successfully..");
+    }
+
+    public void performLogout(){
+        logout.click();
     }
     
 }
