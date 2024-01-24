@@ -10,6 +10,7 @@ import java.net.MalformedURLException;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.Test;
 
+
 public class testCase_04 {
     static RemoteWebDriver driver;
     RegisterPage registerPage;
