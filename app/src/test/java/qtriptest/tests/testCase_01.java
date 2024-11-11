@@ -23,7 +23,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class testCase_01 {
+public class testCase_01 extends BaseTest {
 
         static RemoteWebDriver driver;
         RegisterPage registerPage;
@@ -48,7 +48,9 @@ public class testCase_01 {
            driver= singleton.getDriver();
            //driver.get("https://qtripdynamic-qa-frontend.vercel.app/pages/register/");
     
-           extentReports = new ExtentReports(System.getProperty("user.dir")+"/OurExtentReport.html");
+        //    extentReports = new ExtentReports(System.getProperty("user.dir")+"/OurExtentReport.html");
+           extentReports = new ExtentReports(System.getProperty("user.dir") + "/OurExtentReport.html", true);
+
            extentReports.startTest("TestCase01");
     
         }

@@ -19,7 +19,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class testCase_02 {
+public class testCase_02 extends BaseTest{
     static RemoteWebDriver driver;
     RegisterPage registerPage;
     LoginPage loginPage;
